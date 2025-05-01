@@ -63,7 +63,7 @@ function LandingPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <AppBar
         position="static"
         elevation={0}

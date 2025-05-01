@@ -100,7 +100,7 @@ export default function Authentication() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
 
       {/* Navbar */}
       <AppBar
