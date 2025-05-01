@@ -1,0 +1,62 @@
+We use WebRTC protocol which is a UDP(User Datagram protocol).
+
+1. How does it work?
+    i. Signalling -> SDP
+    ii. Connecting -> ICE
+    iii. Secureing -> DLTS , SRTP
+    iv. Communicating -> RTP, SCTP
+
+
+2. Use WebRTC API which are already most of them are build in browsers
+    i. MediaStream  -> Access the  camara 
+    ii. RTCPeerConnection -> build network for connection
+    iii. RTCDataChannel -> build a data channel to communicate
+
+
+3. WebRTC Architectures
+    i. P2P(peer to peer) -> serverless Architectures
+    ii. SFU(Selective forwarding Unit) -> 
+    iii. MCU(Multi point control Unit)
+
+
+4. MUST learn for this project (source ChatGPT)
+    i. WebRTC
+        -> Real-time communication protocol for 
+            video, audio, and screen sharing.
+
+    ii. Socket.IO
+        -> Enables real-time, bidirectional communication
+             between client and server for signaling
+
+    iii. STUN/TURN server
+        -> STUN (Session Traversal Utilities for NAT) 
+            helps with NAT traversal.
+        -> TURN (Traversal Using Relays around NAT) is \
+            required for relaying media in restrictive networks.
+
+    iv. Media Streams API
+        -> Captures video/audio from user devices
+
+    v. And many more
+
+    
+Start coding:
+
+1. Backend:
+    i. npm install express mongoose nodemon bcrypt
+    ii. npm i http-status socket.io
+    iii. npm i cors --save
+    iv. npm i crypto
+    v. npm i jsonwebtoken
+    vi. npm install dotenv
+
+
+
+2. Frontend
+    i. npm i react-router-dom
+    ii. npm i web-vitals
+    iii. npm i axios http-status socket.io-client
+    iv. npm install @mui/material @mui/styled-engine-sc styled-components
+    v. npm install @mui/icons-material
+    vi. npm install @emotion/styled @emotion/react
+    vii. npm install moment

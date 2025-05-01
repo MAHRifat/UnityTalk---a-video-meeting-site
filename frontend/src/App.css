@@ -1,0 +1,58 @@
+.landingPageContainer{
+  width: 100vw;
+  height: 100vh;
+  background: url("/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.landingPageContainer nav{
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.landingPageContainer nav h2{
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.navlist{
+  display: flex;
+  font-size: 1.05rem;
+  gap: 2rem;
+  cursor: pointer;
+}
+
+.landingMainContainer{
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 5rem;
+  height: 80vh;
+  align-items: center;
+}
+
+.connect{
+  font-size: 1.6rem;
+}
+
+.connect div[role="button"]{
+  width: fit-content;
+  background-color: rgba(233, 157, 17, 0.984);
+  padding: .75rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.connect div[role="button"] a{
+  text-decoration: none;
+}
+
+.meeting_img img{
+  height: 70vh;
+}
