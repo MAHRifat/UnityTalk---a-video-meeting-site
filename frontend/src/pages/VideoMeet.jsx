@@ -63,18 +63,18 @@ const VideoMeet = () => {
         });
 
         socketRef.current.on('signal', gotMessageFromServer);
-        
+
         socketRef.current.on('chat-message', (data) => {
             // Use ref to track the last message to prevent duplicates
             if (data.timestamp > messageCounterRef.current) {
                 messageCounterRef.current = data.timestamp;
                 setMessages(prev => {
-                    const messageExists = prev.some(msg => 
-                        msg.data === data.message && 
-                        msg.sender === data.username && 
+                    const messageExists = prev.some(msg =>
+                        msg.data === data.message &&
+                        msg.sender === data.username &&
                         msg.timestamp === data.timestamp
                     );
-                    
+
                     if (!messageExists) {
                         return [...prev, {
                             data: data.message,
@@ -326,9 +326,9 @@ const VideoMeet = () => {
 
     const addMessage = (data, sender, timestamp) => {
         setMessages(prev => {
-            const messageExists = prev.some(msg => 
-                msg.data === data && 
-                msg.sender === sender && 
+            const messageExists = prev.some(msg =>
+                msg.data === data &&
+                msg.sender === sender &&
                 msg.timestamp === timestamp
             );
             return messageExists ? prev : [...prev, { sender, data, timestamp }];
@@ -442,13 +442,13 @@ const VideoMeet = () => {
                         <IconButton onClick={handleAudioToggle} style={{ color: "white" }}>
                             {audioEnabled ? <MicIcon /> : <MicOffIcon />}
                         </IconButton>
-                        
+
                         {!isMobile && !isTablet && (
                             <IconButton onClick={handleScreenShare} style={{ color: "white" }}>
                                 {screen ? <StopScreenShareIcon /> : <ScreenShareIcon />}
                             </IconButton>
                         )}
-                        
+
                         <Badge
                             badgeContent={newMessages}
                             max={999}
@@ -509,20 +509,20 @@ const VideoMeet = () => {
                                 <Button onClick={() => setShowChat(false)} style={{ marginLeft: 'auto', color: "red" }}>Close</Button>
                             </div>
                             <div className="chatMessages">
-                            {messages.map((msg, idx) => (
-    <div key={idx} className={`chatMessage ${msg.sender === username ? "own" : ""}`}>
-        <div className="messageHeader">
-            <strong>{msg.sender}</strong> &nbsp;
-            <span className="messageTime">
-                {new Date(msg.timestamp).toLocaleTimeString([], { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                })}
-            </span>
-        </div>
-        <div className="messageContent">{msg.data}</div>
-    </div>
-))}
+                                {messages.map((msg, idx) => (
+                                    <div key={idx} className={`chatMessage ${msg.sender === username ? "own" : ""}`}>
+                                        <div className="messageHeader">
+                                            <strong>{msg.sender}</strong> &nbsp;
+                                            <span className="messageTime">
+                                                {new Date(msg.timestamp).toLocaleTimeString([], {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit'
+                                                })}
+                                            </span>
+                                        </div>
+                                        <div className="messageContent">{msg.data}</div>
+                                    </div>
+                                ))}
                             </div>
                             <div className="chatInput">
                                 <TextField
