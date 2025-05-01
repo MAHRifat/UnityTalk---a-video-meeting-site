@@ -3,8 +3,10 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // Add this line
   build: {
-    outDir: '../build', // Outputs to root/build directory
+    outDir: './dist', // Change to relative path
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks: {
