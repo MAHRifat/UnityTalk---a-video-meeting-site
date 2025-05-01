@@ -311,7 +311,7 @@ const VideoMeet = () => {
                 username: username,
                 timestamp: timestamp
             });
-            addMessage(message, username, new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+            // addMessage(message, username, new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
             setMessage('');
         }
     };
@@ -509,15 +509,20 @@ const VideoMeet = () => {
                                 <Button onClick={() => setShowChat(false)} style={{ marginLeft: 'auto', color: "red" }}>Close</Button>
                             </div>
                             <div className="chatMessages">
-                                {messages.map((msg, idx) => (
-                                    <div key={idx} className={`chatMessage ${msg.sender === username ? "own" : ""}`}>
-                                        <div className="messageHeader">
-                                            <strong>{msg.sender}</strong> &nbsp;
-                                            <span className="messageTime">{msg.timestamp}</span>
-                                        </div>
-                                        <div className="messageContent">{msg.data}</div>
-                                    </div>
-                                ))}
+                            {messages.map((msg, idx) => (
+    <div key={idx} className={`chatMessage ${msg.sender === username ? "own" : ""}`}>
+        <div className="messageHeader">
+            <strong>{msg.sender}</strong> &nbsp;
+            <span className="messageTime">
+                {new Date(msg.timestamp).toLocaleTimeString([], { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                })}
+            </span>
+        </div>
+        <div className="messageContent">{msg.data}</div>
+    </div>
+))}
                             </div>
                             <div className="chatInput">
                                 <TextField
