@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "mv ../build public",
     "lint": "eslint .",
     "preview": "vite preview"
   },
