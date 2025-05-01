@@ -63,7 +63,7 @@ function LandingPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      {/* <CssBaseline /> */}
+      <CssBaseline />
       <AppBar
         position="static"
         elevation={0}
@@ -184,11 +184,11 @@ function LandingPage() {
       </AppBar>
 
       <Box sx={{
-        minHeight: 'calc(100vh - 64px)',
         display: 'flex',
         alignItems: 'center',
         padding: '0',
         background: '#f5f7fa',
+        minHeight: '100vh',
       }}>
         <Container maxWidth="lg" sx={{ py: 8 }}>
           <Grid container spacing={6} alignItems="center" justifyContent="center">
