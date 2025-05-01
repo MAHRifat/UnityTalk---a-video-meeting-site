@@ -34,6 +34,7 @@ const VideoMeet = () => {
     const videoRef = useRef([]);
     const connections = useRef({});
     const messagesEndRef = useRef(null);
+    const messageCounterRef = useRef(0); // New ref to track message counts
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -64,25 +65,29 @@ const VideoMeet = () => {
         socketRef.current.on('signal', gotMessageFromServer);
         
         socketRef.current.on('chat-message', (data) => {
-            setMessages(prev => {
-                const messageExists = prev.some(msg => 
-                    msg.data === data.message && 
-                    msg.sender === data.username && 
-                    msg.timestamp === data.timestamp
-                );
-                
-                if (!messageExists) {
-                    return [...prev, {
-                        data: data.message,
-                        sender: data.username,
-                        timestamp: data.timestamp
-                    }];
-                }
-                return prev;
-            });
+            // Use ref to track the last message to prevent duplicates
+            if (data.timestamp > messageCounterRef.current) {
+                messageCounterRef.current = data.timestamp;
+                setMessages(prev => {
+                    const messageExists = prev.some(msg => 
+                        msg.data === data.message && 
+                        msg.sender === data.username && 
+                        msg.timestamp === data.timestamp
+                    );
+                    
+                    if (!messageExists) {
+                        return [...prev, {
+                            data: data.message,
+                            sender: data.username,
+                            timestamp: data.timestamp
+                        }];
+                    }
+                    return prev;
+                });
 
-            if (!showChat && data.username !== username) {
-                setNewMessages(prev => prev + 1);
+                if (!showChat && data.username !== username) {
+                    setNewMessages(prev => prev + 1);
+                }
             }
         });
 
@@ -300,13 +305,13 @@ const VideoMeet = () => {
 
     const handleSendMessage = () => {
         if (message.trim()) {
-            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const timestamp = Date.now(); // Use timestamp as unique identifier
             socketRef.current.emit('chat-message', {
                 message: message,
                 username: username,
                 timestamp: timestamp
             });
-            addMessage(message, username, timestamp);
+            addMessage(message, username, new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
             setMessage('');
         }
     };

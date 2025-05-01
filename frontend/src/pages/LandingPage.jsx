@@ -297,7 +297,7 @@ function LandingPage() {
                 </Stack>
               </Box>
 
-              <Grid container spacing={3} justifyContent={isTablet ? "center" : "flex-start"}>
+              <Grid container spacing={3} justifyContent={isMobile ? "center" : "flex-start"}>
                 {[
                   {
                     icon: <GroupIcon color="primary" sx={{ fontSize: 40 }} />,
@@ -315,7 +315,7 @@ function LandingPage() {
                     description: "End-to-end encrypted communications"
                   }
                 ].map((feature, index) => (
-                  <Grid item xs={12} sm={8} md={isTablet ? 8 : 4} key={index}>
+                  <Grid item xs={12} sm={6} md={4} key={index}>
                     <Paper elevation={3} sx={{
                       padding: 3,
                       height: '100%',
@@ -325,7 +325,7 @@ function LandingPage() {
                         transform: 'translateY(-8px)',
                         boxShadow: '0px 10px 20px rgba(0,0,0,0.1)',
                       },
-                      maxWidth: isTablet ? '400px' : '100%',
+                      maxWidth: isMobile ? '100%' : 'none',
                       mx: 'auto'
                     }}>
                       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -361,7 +361,7 @@ function LandingPage() {
               display: isMobile ? 'none' : 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              minHeight: '400px' // Ensures consistent height
+              minHeight: '400px'
             }}>
               <Box sx={{
                 position: 'relative',
