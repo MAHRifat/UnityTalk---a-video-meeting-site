@@ -2,17 +2,16 @@ import axios from "axios";
 import httpStatus from "http-status";
 import { createContext, useContext, useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
-import server from "../environment";
 
 
 export const AuthContext = createContext({});
 
 const client = axios.create({
-    baseURL: "http://localhost:3000/api/v1/users"
+    baseURL: "https://unitytalk-backend.onrender.com/api/v1/users"
 })
 
 const meeting = axios.create({
-    baseURL: "http://localhost:3000/api/meetings"
+    baseURL: "https://unitytalk-backend.onrender.com/api/meetings"
 })
 
 

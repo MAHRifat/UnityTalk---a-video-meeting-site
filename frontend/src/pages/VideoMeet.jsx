@@ -10,7 +10,7 @@ import {
 import io from 'socket.io-client';
 import './VideoMeet.css';
 
-const server_url = "http://localhost:3000"; // Change if needed
+const server_url = "https://unitytalk-backend.onrender.com"; // Change if needed
 const peerConfigConnections = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
 
 const VideoMeet = () => {
