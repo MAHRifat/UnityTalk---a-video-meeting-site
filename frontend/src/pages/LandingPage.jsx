@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   CssBaseline,
   AppBar,
@@ -25,8 +25,7 @@ import {
   Menu as MenuIcon,
   Group as GroupIcon,
   ScreenShare as ScreenShareIcon,
-  Security as SecurityIcon,
-  Videocam as VideocamIcon
+  Security as SecurityIcon
 } from '@mui/icons-material';
 
 // Create a default theme
@@ -48,6 +47,7 @@ const defaultTheme = createTheme({
 });
 
 function LandingPage() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const isMobile = useMediaQuery('(max-width:600px)');
@@ -185,13 +185,27 @@ function LandingPage() {
 
       <Box sx={{
         display: 'flex',
-        alignItems: 'center',
-        padding: '0',
-        background: '#f5f7fa',
+        flexDirection: 'column',
         minHeight: '100vh',
+        background: '#f5f7fa',
       }}>
-        <Container maxWidth="lg" sx={{ py: 8 }}>
-          <Grid container spacing={6} alignItems="center" justifyContent="center">
+        <Container 
+          maxWidth="lg" 
+          sx={{ 
+            py: 8,
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Grid 
+            container 
+            spacing={6}
+            sx={{
+              width: '100%',
+              margin: '0 auto',
+            }}
+          >
             <Grid item xs={12} md={6}>
               <Typography
                 variant={isMobile ? 'h3' : 'h2'}
@@ -346,12 +360,13 @@ function LandingPage() {
             <Grid item xs={12} md={6} sx={{
               display: isMobile ? 'none' : 'flex',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
+              minHeight: '400px' // Ensures consistent height
             }}>
               <Box sx={{
                 position: 'relative',
-                height: '100%',
                 width: '100%',
+                height: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
