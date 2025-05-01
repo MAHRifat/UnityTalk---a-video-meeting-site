@@ -195,7 +195,6 @@ function LandingPage() {
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            overflow: isMobile ? 'hidden' : 'visible'
           }}
         >
           <Grid 
@@ -297,69 +296,62 @@ function LandingPage() {
                 </Stack>
               </Box>
 
-              <Box sx={{
-                height: isMobile ? '400px' : 'auto',
-                overflowY: isMobile ? 'auto' : 'visible',
-                pr: isMobile ? 2 : 0
-              }}>
-                <Grid container spacing={3}>
-                  {[
-                    {
-                      icon: <GroupIcon color="primary" sx={{ fontSize: 40 }} />,
-                      title: "Group Meetings",
-                      description: "Host meetings with up to 100 participants"
-                    },
-                    {
-                      icon: <ScreenShareIcon color="primary" sx={{ fontSize: 40 }} />,
-                      title: "Screen Sharing",
-                      description: "Share your screen with participants"
-                    },
-                    {
-                      icon: <SecurityIcon color="primary" sx={{ fontSize: 40 }} />,
-                      title: "Secure Calls",
-                      description: "End-to-end encrypted communications"
-                    }
-                  ].map((feature, index) => (
-                    <Grid item xs={12} key={index}>
-                      <Paper elevation={3} sx={{
-                        padding: 3,
-                        height: '100%',
-                        borderRadius: '16px',
-                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                        '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0px 10px 20px rgba(0,0,0,0.1)',
-                        },
-                        mx: 'auto'
+              <Grid container spacing={3}>
+                {[
+                  {
+                    icon: <GroupIcon color="primary" sx={{ fontSize: 40 }} />,
+                    title: "Group Meetings",
+                    description: "Host meetings with up to 100 participants"
+                  },
+                  {
+                    icon: <ScreenShareIcon color="primary" sx={{ fontSize: 40 }} />,
+                    title: "Screen Sharing",
+                    description: "Share your screen with participants"
+                  },
+                  {
+                    icon: <SecurityIcon color="primary" sx={{ fontSize: 40 }} />,
+                    title: "Secure Calls",
+                    description: "End-to-end encrypted communications"
+                  }
+                ].map((feature, index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Paper elevation={3} sx={{
+                      padding: 3,
+                      height: '100%',
+                      borderRadius: '16px',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: '0px 10px 20px rgba(0,0,0,0.1)',
+                      },
+                    }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <Avatar sx={{
+                          bgcolor: '#e8f5e9',
+                          width: 60,
+                          height: 60,
+                          mb: 2
+                        }}>
+                          {feature.icon}
+                        </Avatar>
+                      </Box>
+                      <Typography variant="h6" gutterBottom sx={{
+                        fontWeight: 600,
+                        color: '#121212',
+                        textAlign: 'center'
                       }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                          <Avatar sx={{
-                            bgcolor: '#e8f5e9',
-                            width: 60,
-                            height: 60,
-                            mb: 2
-                          }}>
-                            {feature.icon}
-                          </Avatar>
-                        </Box>
-                        <Typography variant="h6" gutterBottom sx={{
-                          fontWeight: 600,
-                          color: '#121212',
-                          textAlign: 'center'
-                        }}>
-                          {feature.title}
-                        </Typography>
-                        <Typography variant="body2" sx={{
-                          color: '#616161',
-                          textAlign: 'center'
-                        }}>
-                          {feature.description}
-                        </Typography>
-                      </Paper>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Box>
+                        {feature.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{
+                        color: '#616161',
+                        textAlign: 'center'
+                      }}>
+                        {feature.description}
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                ))}
+              </Grid>
             </Grid>
 
             <Grid item xs={12} md={6} sx={{
